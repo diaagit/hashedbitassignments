@@ -215,8 +215,9 @@ let students1 = [
 ];
 
 let output1 = students1.map(student => {
-    let sum = Object.values(student)[0].reduce((acc, subject) => acc + subject);
-    let average = sum / Object.values(student)[0].length;
+    let subjects = Object.values(student)[0];
+    let sum = Object.values(subjects).reduce((acc, subject) => acc + subject);
+    let average = sum / Object.values(subjects).length;
     return { average: average };
 }
 );
