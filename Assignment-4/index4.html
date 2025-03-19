@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic CSS</title>
+    <style>
+        .text-here {
+        font-size: 55px;
+        font-family: sans-serif;
+        color: black;
+        text-decoration: none;
+        font-style: normal;
+        font-weight: normal;
+        line-height: normal;
+        text-align: left;
+        letter-spacing: normal;
+        word-spacing: normal;
+}
+    </style>
+</head>
+<body>
+    <div class='text-here' id='text-container'>This is some example text</div>
+
+
+    <input type="text" id="colorbox">
+
+    <button id="colorchange">Change Colour</button>
+
+    <br><br>
+
+    <input type="range" id="fontsize" min="10" max="100" value="55">
+    <br><br>
+
+
+    <button id="italic" class="stylebt">Italics</button>
+    <button id="underline" class="stylebt">Underline</button>
+    <button id="bold" class="stylebt">Bold</button>
+
+    <br><br>
+
+
+    <select id="list">
+        <option value="serif">Serif</option>
+        <option value="sans-serif">Sans-Serif</option>
+        <option value="monospace">Monospace</option>
+        <option value="cursive">Cursive</option>
+        <option value="fantasy">Fantasy</option>
+    </select>
+
+
+    <br><br>
+
+    <button id="getstyle">Get CSS</button>
+
+    <br><br>
+    <p id="css-props"></p>
+
+    <script>
+        let text = document.getElementById('text-container');
+        let colorbox = document.getElementById('colorbox');
+        let colorchange = document.getElementById('colorchange');
+        let fontsize = document.getElementById('fontsize');
+        let italic = document.getElementById('italic');
+        let underline = document.getElementById('underline');
+        let bold = document.getElementById('bold');
+        let list = document.getElementById('list');
+        let getstyle = document.getElementById('getstyle');
+        let cssprops = document.getElementById('css-props');
+
+        colorchange.addEventListener('click', () => {
+            text.style.color = colorbox.value;
+        });
+
+        fontsize.addEventListener('input', () => {
+            text.style.fontSize = fontsize.value + 'px';
+        });
+
+        italic.addEventListener('click', () => {
+            if (text.style.fontStyle === 'italic') {
+                text.style.fontStyle = 'normal';
+            } else {
+                text.style.fontStyle = 'italic';
+            }
+        });
+
+        underline.addEventListener('click', () => {
+            if (text.style.textDecoration === 'underline') {
+                text.style.textDecoration = 'none';
+            } else {
+                text.style.textDecoration = 'underline';
+            }
+        });
+
+        bold.addEventListener('click', () => {
+            if (text.style.fontWeight === 'bold') {
+                text.style.fontWeight = 'normal';
+            } else {
+                text.style.fontWeight = 'bold';
+            }
+        });
+
+        list.addEventListener('change', () => {
+            text.style.fontFamily = list.value;
+        });
+
+        getstyle.addEventListener('click', () => {
+            cssprops.innerHTML = `Font Size: ${text.style.fontSize}<br>Font Style: ${text.style.fontStyle}<br>Font Weight: ${text.style.fontWeight}<br>Font Family: ${text.style.fontFamily}<br>Text Decoration: ${text.style.textDecoration}<br>Color: ${text.style.color}`;
+        });
+    </script>
+    
+</body>
+</html>
